@@ -10,14 +10,17 @@
       "dom"
     ],
     "removeComments": true,
-    "allowSyntheticDefaultImports": false,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "allowJs": true,
     "baseUrl": "./",
+
     "paths": {
       "components/*": [
         "src/components/*"
       ]
     }
-  }
+  },
+  "include": [ "./src/**/*"],
+  "exclude": [ "./src/__tests__", "node_modules"]
 }

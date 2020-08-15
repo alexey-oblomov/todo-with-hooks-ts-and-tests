@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useReducer} from 'react';
-import { Action, State, ContextState} from '../types/stateType'
+import { Action, ActionType, State, ContextState} from '../types/stateType'
 import NewTask from "./NewTask";
 import TasksList from "./TasksList";
 
@@ -9,9 +9,11 @@ export const initialState: State = {
     tasks: []
 }
 
+export const ContextApp = React.createContext<Partial<ContextState>>({});
+
 export const todoReducer = (state: State, action: Action):State => {
     switch (action.type) {
-        case ActionTyp.ADD: {
+        case ActionType.ADD: {
             return {...state, tasks: [...state.tasks, {
                 name: action.payload,
                 isDone: false
@@ -42,10 +44,10 @@ const App: React.FC = () => {
 
   return (
         <>
-        <ContextApp.Provider value={ContextState}>
-            <NewTask />
-            <TasksList />
-        </ContextApp.Provider>
+            <ContextApp.Provider value={ContextState}>
+                <NewTask />
+                <TasksList />
+            </ContextApp.Provider>
             
         </>
     )
